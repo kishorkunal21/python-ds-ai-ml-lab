@@ -1,0 +1,15 @@
+conda create -n python12 python=3.12
+pip3 install torch torchvision torchaudio
+
+###### Jupyter notebook
+
+conda install notebook
+
+conda install ipykernel
+ipython kernel install --user --name=gnnnlp2
+
+#after removing kernel
+jupyter kernelspec uninstall gnnnlp2
+
+pip install -r requirements.txt
+pip freeze > requirements.txt
