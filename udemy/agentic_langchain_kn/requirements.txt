@@ -1,0 +1,9 @@
+torch
+pydantic
+python-dotenv
+langchain_community
+pypdf
+bs4
+arxiv
+PyMuPDF
+langchain-text-splitters
