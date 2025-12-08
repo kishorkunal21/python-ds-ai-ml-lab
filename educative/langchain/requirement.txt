@@ -1,2 +1,6 @@
 langchain
 langchain-groq
+langchain-chroma
+chromadb
+langchain-nomic
+nomic
