@@ -3,7 +3,7 @@ from typing import List
 
 class Node:
     """Represents a single node in the Binary Tree"""
-    def __init__(self, val: int = 0, left: 'Node' | None = None, right: 'Node' | None = None):
+    def __init__(self, val: int = 0, left= None, right=None ):
         self.val = val          # Value stored in this node
         self.left = left        # Reference to left child
         self.right = right      # Reference to right child
@@ -45,7 +45,7 @@ class BinaryTree:
                 queue.append(current.right)
             i += 1
 
-    def print_tree(self) -> None:
+    def print_level_tree(self) -> None:
         """Print the tree in Level Order (BFS)"""
         if not self.root:
             print("Empty tree")
@@ -94,6 +94,27 @@ class BinaryTree:
         dfs(self.root)
         return result
 
+    def print_tree(self, root: Node | None) -> None:
+        """Clear tree with Left/Right labels"""
+        if not root:
+            print("Empty tree")
+            return
+
+        def helper(node, prefix="", is_left=True):
+            if node is None:
+                return
+            
+            side = "Left" if is_left else "Right"
+            print(prefix + ("├── " if is_left else "└── ") + f"{side}: {node.val}")
+            
+            new_prefix = prefix + ("│   " if is_left else "    ")
+            
+            helper(node.left, new_prefix, True)
+            helper(node.right, new_prefix, False)
+
+        print("Tree Structure:")
+        helper(root)
+
 
 # ==================== Test the class ====================
 if __name__ == "__main__":
@@ -101,7 +122,8 @@ if __name__ == "__main__":
     bt.build_from_list([1, 2, 3, 4, 5, None, 6])
     
     print("Level Order:")
-    bt.print_tree()
+    bt.print_level_tree()
+    bt.print_tree(bt.root)
     
     print("Inorder Traversal:", bt.inorder())
     print("Preorder Traversal:", bt.preorder())

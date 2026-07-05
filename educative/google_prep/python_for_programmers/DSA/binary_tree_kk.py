@@ -84,16 +84,32 @@ class BinaryTree:
                 
 
     def postorder(self):
-            result = []
-            def dfs(node):
-                if node:
-                    dfs(node.left)
-                    dfs(node.right)
-                    result.append(node.val)
+        result = []
+        def dfs(node):
+            if node:
+                dfs(node.left)
+                dfs(node.right)
+                result.append(node.val)
 
-            dfs(self.root)
-            return result
-                
+        dfs(self.root)
+        return result
+
+    def print_level_nodes(self):
+        dq = deque([self.root])    
+        print('[',self.root.val, end=",")
+        while dq:
+            current = dq.popleft()
+            print('')
+            if current.left:
+                dq.appendleft(current.left)
+                print(current.left.val,end=",")
+            
+            if current.right:
+                dq.append(current.right)
+                print(current.right.val,end=",")   
+        
+        print(']')
+
 
     def print_tree_level_order(self):
         result = []
@@ -110,12 +126,8 @@ class BinaryTree:
                 queue.append(node.left)
             if node.right:
                 queue.append(node.right)
-
         return result        
             
-
-
-
 
 
 # ==================== Test ====================
@@ -126,6 +138,8 @@ if __name__ == "__main__":
     print("preorder:", bt.preorder())
     print("Inorder:", bt.inorder())
     print("postorder:", bt.postorder())
+
+    print("\n", bt.print_level_nodes())
 
 
 
