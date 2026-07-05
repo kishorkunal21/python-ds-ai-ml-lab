@@ -1,9 +1,6 @@
-import queue
+from utils.tree_utils import BinaryTree
 
-def breadth_first_search(root):
-    if root is null:
-        return 
-    
 
-#initialize a queue and enqueue the root node
-
+bt  = BinaryTree()
+bt.build_from_list([1,2,3,4,4,5])
+bt.print_tree(bt.root)
